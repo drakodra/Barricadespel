@@ -10,14 +10,14 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author W. Kuik
+ * @author frank
  */
-public class Muur extends Vak{
+public class Finish extends Vak{
     private Icon icon;
     
-    public Muur(Level level){
+    public Finish(Level level){
        super(level);
-       this.icon = new ImageIcon(getClass().getResource("images/Muur.png"));
+       this.icon = new ImageIcon(getClass().getResource("images/Eindveld.png"));
        showMe();
     }
     

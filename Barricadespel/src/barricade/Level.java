@@ -31,9 +31,8 @@ public class Level extends JFrame {
     }
 
     private void laadLevel(int levelNr) {
-        //vm1vvvv555vvvv68v555vv1vvvv336vm1vvvv555vm11mmm515v21vvvm15vvm1mm3mmvvvm1551vvvv7m15vvvmvvvm15vvvmvf
         //v is een leeg vakje
-        //s is speler
+        //s is een speler
         //m is een muur
         //1 is een baricade met nummer 1
         //2 is een baricade met nummer 2
@@ -47,11 +46,11 @@ public class Level extends JFrame {
         //0 is een sleutel met nummer 5
         //f is finish
         
-        String Layout ="";
+        String Layout = "";
         
         switch (levelNr) {
             case 1:
-               Layout = "vm1vvvv555vvvv68v555vv1vvvv336vm1vvvv555vm11mmm515v21vvvm15vvm1mm3mmvvvm1551vvvv7m15vvvmvvvm15vvvmvf";
+               Layout = "sm1vvvv555vvvv68v555vv1vvvv336vm1vvvv555vm11mmm515v21vvvm15vvm1mm3mmvvvm1551vvvv7m15vvvmvvvm15vvvmvf";
             break;
         }
         
@@ -94,7 +93,7 @@ public class Level extends JFrame {
                             vak[rij][kolom] = new Muur(this);
                         break;
                         case 'f':
-                            vak[rij][kolom] = new Vak(this);
+                            vak[rij][kolom] = new Finish(this);
                         break;
                         case '0':
                             vak[rij][kolom] = new Sleutel(this, 5);
