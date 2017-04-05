@@ -15,9 +15,12 @@ import javax.swing.JLabel;
  */
 public class Vak extends JLabel{
     private Icon icon;
+
+    private Level level;
     
-    public Vak(){
-        this.icon = new ImageIcon( getClass().getResource( "Vak.png"));
+    public Vak(Level level) {
+        this.level = level;
+      this.icon = new ImageIcon( getClass().getResource( "Vak.png"));
     }
     
     public void showMe(){
