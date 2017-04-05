@@ -20,10 +20,13 @@ public class Level extends JPanel{
     
     private void laadLevel(int levelNr){
         switch(levelNr){
-            case 1: 
+            case 1:
+            break;    
         }
-        
     }
     
-    
+    public void CheckVak() {
+        //TODO: Het vak check wat er staat.
+        //Let op je moet ook checken of die niet out of bounds loopt
+    }  
 }
