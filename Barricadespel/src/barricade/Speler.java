@@ -35,10 +35,10 @@ public class Speler {
     }
     
     public void StapBeneden() {
-        this.PosVerticaal--;
+        this.PosVerticaal++;
     }
     
     public void StapBoven() {
-        this.PosVerticaal++;
+        this.PosVerticaal--;
     }
 }
