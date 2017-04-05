@@ -101,9 +101,6 @@ public class Level extends JFrame {
                             vak[rij][kolom] = new Vak(this);
                             vak[rij][kolom].setIcon(icon);
                         break;
-                        case '0':
-                            vak[rij][kolom] = new Sleutel(this, 5);
-                        break;
                         case '1':
                             vak[rij][kolom] = new Barricade(this, 1);
                         break;
@@ -130,6 +127,9 @@ public class Level extends JFrame {
                         break;
                         case '9':
                             vak[rij][kolom] = new Sleutel(this, 4);
+                        break;
+                        case '0':
+                            vak[rij][kolom] = new Sleutel(this, 5);
                         break;
                         default:
                             vak[rij][kolom] = new Vak(this);
@@ -187,15 +187,19 @@ public class Level extends JFrame {
             switch (e.getKeyCode()) {
                 case 37:
                     moveUp();
+                    System.out.println(speler.getSleutel());
                     break;
                 case 38:
                     moveLeft();
+                     System.out.println(speler.getSleutel());
                     break;
                 case 39:
                     moveDown();
+                     System.out.println(speler.getSleutel());
                     break;
                 case 40:
-                    moveRight();                   
+                    moveRight();   
+                     System.out.println(speler.getSleutel());
                     break;
             }
         }

@@ -45,7 +45,10 @@ public class Sleutel extends Vak {
     
     @Override
     public boolean loopBaar(Speler speler) {    
-        speler.setSleutel(this.sleutelNr);
+        if(this.opgepakt == false) {
+            speler.setSleutel(this.sleutelNr);
+        }
+
         setOpgepakt();
         return true;
     }
