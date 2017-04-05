@@ -14,8 +14,10 @@ import javax.swing.JLabel;
  */
 public class Vak extends JLabel{
     private Icon icon;
-    public Vak(){
-        //laad hier het plaatje in icon
+    private Level level;
+    
+    public Vak(Level level) {
+        this.level = level;
     }
     
     public void showMe(){
