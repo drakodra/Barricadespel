@@ -51,14 +51,5 @@ public class Sleutel extends Vak {
         }
     }
 
-    @Override
-    public int getSleutelNr() {
-        if (opgepakt) {
-            return 0;
-        } else {
-            opgepakt = true;
-            showMe();
-            return sleutelNr;
-        }
-    }
+
 }
