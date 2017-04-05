@@ -5,6 +5,8 @@
  */
 package barricade;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -24,6 +26,7 @@ public class Level extends JFrame{
         laadLevel(levelNr);
         maakLevel();
         initComponents();
+        this.addKeyListener(new arrowListener());
     }
     
     private void laadLevel(int levelNr){
@@ -65,5 +68,37 @@ public class Level extends JFrame{
             vak[rij][i].setSize(SIZE, SIZE);
             vak[rij][i].setLocation(SIZE * i, SIZE * rij);
         }
+    }
+    
+    class arrowListener implements KeyListener{
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            switch (e.getKeyCode()){
+                case 37:
+                    
+                    break;
+                case 38:
+                    
+                    break;
+                case 39:
+                    
+                    break;
+                case 40:
+                    
+                    break;
+            }
+        }
+
+        @Override
+        public void keyTyped(KeyEvent e) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+        
     }
 }
