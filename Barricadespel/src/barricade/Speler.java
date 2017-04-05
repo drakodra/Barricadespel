@@ -62,4 +62,8 @@ public class Speler extends JLabel {
     public void setSleutel(int sleutel) {
         this.sleutelNr = sleutel;
     }
+    
+    public int getSleutel() {
+        return this.sleutelNr;
+    }
 }

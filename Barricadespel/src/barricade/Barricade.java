@@ -11,7 +11,6 @@ import javax.swing.ImageIcon;
 
 public class Barricade extends Vak {
     private Icon iconGesloten;
-    private Icon iconGeopend;
     private int barricadeNr;
     private boolean geopend;
     
@@ -21,17 +20,21 @@ public class Barricade extends Vak {
         switch (barricadeNr){
             case 1: 
                 this.iconGesloten = new ImageIcon(getClass().getResource("images/Barricade100.png"));
+                break;
             case 2:
                 this.iconGesloten = new ImageIcon(getClass().getResource("images/Barricade200.png"));
+                break;
             case 3:
                 this.iconGesloten = new ImageIcon(getClass().getResource("images/Barricade300.png"));
+                break;
             case 4:
                 this.iconGesloten = new ImageIcon(getClass().getResource("images/Barricade400.png"));
+                break;
             case 5:
                 this.iconGesloten = new ImageIcon(getClass().getResource("images/Barricade500.png"));
+                break;
         }
         
-        this.iconGeopend = new ImageIcon(getClass().getResource("images/Vak.png"));
         this.barricadeNr = barricadeNr;
         this.geopend = false;
         showMe();
@@ -39,26 +42,25 @@ public class Barricade extends Vak {
     
     @Override
     public void showMe(){
-        if(geopend){
-            this.setIcon(this.iconGeopend);
-        } else {
-            this.setIcon(this.iconGesloten);
-        }
+        this.setIcon(this.iconGesloten);
     }
     
+    @Override
     public boolean loopBaar(Speler speler){
-        return geopend;
+        if(this.geopend != true) {
+            if(speler.getSleutel() == barricadeNr) {
+                this.geopend = true;
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return true;
+        }
     }
     
     @Override
     public int getBarricadeNr(){
         return barricadeNr;
     }
-    
-    public void tryKey(int sleutelNr){
-        if(barricadeNr == sleutelNr){
-            geopend = true;
-            this.showMe();
-        }
-    }   
 }

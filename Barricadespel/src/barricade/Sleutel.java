@@ -35,6 +35,7 @@ public class Sleutel extends Vak {
                 break;
             case 5:
                 this.iconSleutel = new ImageIcon(getClass().getResource("images/Sleutel500.png"));
+                break;
         }
         
         this.sleutelNr = sleutelNr;
@@ -42,7 +43,14 @@ public class Sleutel extends Vak {
         showMe();
     }
     
-    public void sleutelPakken() {
+    @Override
+    public boolean loopBaar(Speler speler) {    
+        speler.setSleutel(this.sleutelNr);
+        setOpgepakt();
+        return true;
+    }
+    
+    public void setOpgepakt() {
        this.opgepakt = true;
     }
 
