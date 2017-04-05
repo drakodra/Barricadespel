@@ -17,7 +17,7 @@ public class Muur extends Vak{
     
     public Muur(Level level){
         super(level);
-       this.icon = new ImageIcon(getClass().getResource( "Muur.png"));
+       this.icon = new ImageIcon(getClass().getResource( "/images/Muur.png"));
     }
     
     @Override

@@ -20,18 +20,18 @@ public class Barricade extends Vak {
         super(level);
         switch (barricadeNr){
             case 1: 
-                this.iconGesloten = new ImageIcon(getClass().getResource("Barricade100.png"));
+                this.iconGesloten = new ImageIcon(getClass().getResource("/images/Barricade100.png"));
             case 2:
-                this.iconGesloten = new ImageIcon(getClass().getResource("Barricade200.png"));
+                this.iconGesloten = new ImageIcon(getClass().getResource("/images/Barricade200.png"));
             case 3:
-                this.iconGesloten = new ImageIcon(getClass().getResource("Barricade300.png"));
+                this.iconGesloten = new ImageIcon(getClass().getResource("/images/Barricade300.png"));
             case 4:
-                this.iconGesloten = new ImageIcon(getClass().getResource("Barricade400.png"));
+                this.iconGesloten = new ImageIcon(getClass().getResource("/images/Barricade400.png"));
             case 5:
-                this.iconGesloten = new ImageIcon(getClass().getResource("Barricade500.png"));
+                this.iconGesloten = new ImageIcon(getClass().getResource("/images/Barricade500.png"));
         }
         
-        this.iconGeopend = new ImageIcon(getClass().getResource("Vak.png"));
+        this.iconGeopend = new ImageIcon(getClass().getResource("/images/Vak.png"));
         this.barricadeNr = barricadeNr;
         this.geopend = false;
     }

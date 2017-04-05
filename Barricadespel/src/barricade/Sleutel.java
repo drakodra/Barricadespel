@@ -23,23 +23,23 @@ public class Sleutel extends Vak {
         super(level);
         switch (sleutelNr){
             case 1:
-                this.iconSleutel = new ImageIcon(getClass().getResource("Sleutel100.png"));
+                this.iconSleutel = new ImageIcon(getClass().getResource("/images/Sleutel100.png"));
                 break;
             case 2:
-                this.iconSleutel = new ImageIcon(getClass().getResource("Sleutel200.png"));
+                this.iconSleutel = new ImageIcon(getClass().getResource("/images/Sleutel200.png"));
                 break;
             case 3:
-                this.iconSleutel = new ImageIcon(getClass().getResource("Sleutel300.png"));
+                this.iconSleutel = new ImageIcon(getClass().getResource("/images/Sleutel300.png"));
                 break;
             case 4:
-                this.iconSleutel = new ImageIcon(getClass().getResource("Sleutel400.png"));
+                this.iconSleutel = new ImageIcon(getClass().getResource("/images/Sleutel400.png"));
                 break;
             case 5:
-                this.iconSleutel = new ImageIcon(getClass().getResource("Sleutel500.png"));
+                this.iconSleutel = new ImageIcon(getClass().getResource("/images/Sleutel500.png"));
         }
         this.sleutelNr = sleutelNr;
         this.opgepakt = false;
-        this.iconOpgepakt = new ImageIcon(getClass().getResource("Vak.png"));
+        this.iconOpgepakt = new ImageIcon(getClass().getResource("/images/Vak.png"));
     }
 
     @Override

@@ -21,7 +21,8 @@ public class Vak extends JLabel {
 
     public Vak(Level level) {
         this.level = level;
-        this.icon = new ImageIcon(getClass().getResource("Vak.png"));
+        this.icon = new ImageIcon(getClass().getResource("images/Vak.png"));
+        showMe();
     }
 
     public void showMe() {

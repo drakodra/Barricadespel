@@ -55,7 +55,6 @@ public class Level extends JFrame{
         for (int rij = 0; rij < aantalRijen; rij++) {
             for (int kolom = 0; kolom < aantalRijen; kolom++) {
                 vak[rij][kolom] = new Vak(this);
-                vak[rij][kolom].setText("X");
             }
         }
     }
