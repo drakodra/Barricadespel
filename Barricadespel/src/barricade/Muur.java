@@ -7,31 +7,34 @@ package barricade;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 
 /**
  *
  * @author W. Kuik
  */
-public class Vak extends JLabel{
+public class Muur extends Vak{
     private Icon icon;
     
-    public Vak(){
-        this.icon = new ImageIcon( getClass().getResource( "Vak.png"));
+    public Muur(){
+       this.icon = new ImageIcon(getClass().getResource( "Muur.png"));
     }
     
+    @Override
     public void showMe(){
         this.setIcon(this.icon);
     }
     
+    @Override
     public boolean loopBaar(){
-        return true;
+        return false;
     }
     
+    @Override
     public int getSleutelNr(){
         return 0;
     }
     
+    @Override
     public int getBarricadeNr(){
         return 0;
     }   

@@ -6,6 +6,7 @@
 package barricade;
 
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 
 
 public class Barricade extends Vak {
@@ -14,10 +15,22 @@ public class Barricade extends Vak {
     private int barricadeNr;
     boolean geopend;
     
-    public Barricade(int barricade){
-        //this.iconGesloten =
-        //this.iconGeopend =
-        this.barricadeNr = barricade;
+    public Barricade(int barricadeNr){
+        switch (barricadeNr){
+            case 1: 
+                this.iconGesloten = new ImageIcon(getClass().getResource("Barricade100.png"));
+            case 2:
+                this.iconGesloten = new ImageIcon(getClass().getResource("Barricade200.png"));
+            case 3:
+                this.iconGesloten = new ImageIcon(getClass().getResource("Barricade300.png"));
+            case 4:
+                this.iconGesloten = new ImageIcon(getClass().getResource("Barricade400.png"));
+            case 5:
+                this.iconGesloten = new ImageIcon(getClass().getResource("Barricade500.png"));
+        }
+        
+        this.iconGeopend = new ImageIcon(getClass().getResource("Vak.png"));
+        this.barricadeNr = barricadeNr;
         this.geopend = false;
     }
     
