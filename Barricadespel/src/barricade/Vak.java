@@ -13,29 +13,30 @@ import javax.swing.JLabel;
  *
  * @author W. Kuik
  */
-public class Vak extends JLabel{
+public class Vak extends JLabel {
+
     private Icon icon;
 
     private Level level;
-    
+
     public Vak(Level level) {
         this.level = level;
-      this.icon = new ImageIcon( getClass().getResource( "Vak.png"));
+        this.icon = new ImageIcon(getClass().getResource("Vak.png"));
     }
-    
-    public void showMe(){
+
+    public void showMe() {
         this.setIcon(this.icon);
     }
-    
-    public boolean loopBaar(){
+
+    public boolean loopBaar() {
         return true;
     }
-    
-    public int getSleutelNr(){
+
+    public int getSleutelNr() {
         return 0;
     }
-    
-    public int getBarricadeNr(){
+
+    public int getBarricadeNr() {
         return 0;
-    }   
+    }
 }

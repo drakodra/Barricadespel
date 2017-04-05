@@ -15,27 +15,13 @@ import javax.swing.ImageIcon;
 public class Muur extends Vak{
     private Icon icon;
     
-    public Muur(){
+    public Muur(Level level){
+        super(level);
        this.icon = new ImageIcon(getClass().getResource( "Muur.png"));
-    }
-    
-    @Override
-    public void showMe(){
-        this.setIcon(this.icon);
     }
     
     @Override
     public boolean loopBaar(){
         return false;
-    }
-    
-    @Override
-    public int getSleutelNr(){
-        return 0;
-    }
-    
-    @Override
-    public int getBarricadeNr(){
-        return 0;
-    }   
+    } 
 }
