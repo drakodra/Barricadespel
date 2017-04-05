@@ -124,12 +124,12 @@ public class Level extends JFrame {
 
         @Override
         public void keyTyped(KeyEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            //wordt niet gebruikt
         }
 
         @Override
         public void keyPressed(KeyEvent e) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            //wordt niet gebruikt
         }
 
     }
