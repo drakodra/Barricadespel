@@ -50,7 +50,8 @@ public class Level extends JFrame {
 
     private void initComponents() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        this.setSize(400, 400);
+        this.setSize(850, 550);
+        this.setResizable(false);
         panel = new JPanel();
         panel.setLayout(null);
         this.add(panel);
