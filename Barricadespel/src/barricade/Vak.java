@@ -33,10 +33,6 @@ public class Vak extends JLabel {
         return true;
     }
 
-    public int getSleutelNr() {
-        return 0;
-    }
-
     public int getBarricadeNr() {
         return 0;
     }
