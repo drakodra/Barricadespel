@@ -187,19 +187,15 @@ public class Level extends JFrame {
             switch (e.getKeyCode()) {
                 case 37:
                     moveUp();
-                    System.out.println(speler.getSleutel());
                     break;
                 case 38:
                     moveLeft();
-                     System.out.println(speler.getSleutel());
                     break;
                 case 39:
                     moveDown();
-                     System.out.println(speler.getSleutel());
                     break;
                 case 40:
                     moveRight();   
-                     System.out.println(speler.getSleutel());
                     break;
             }
         }
