@@ -24,7 +24,6 @@ public class Level extends JFrame {
 
     public Level(int levelNr, int aantalRijen) {
         this.aantalRijen = aantalRijen;
-        speler = new Speler(0,0);
         laadLevel(levelNr);
         initComponents();
         this.addKeyListener(new arrowListener());
@@ -95,6 +94,10 @@ public class Level extends JFrame {
                         case 'f':
                             vak[rij][kolom] = new Finish(this);
                         break;
+                        case 's':
+                            vak[rij][kolom] = new Vak(this);
+                            this.speler = new Speler(rij,kolom);
+                        break;
                         case '0':
                             vak[rij][kolom] = new Sleutel(this, 5);
                         break;
@@ -125,6 +128,9 @@ public class Level extends JFrame {
                         case '9':
                             vak[rij][kolom] = new Sleutel(this, 4);
                         break;
+                        default:
+                            vak[rij][kolom] = new Vak(this);
+                        break;
                     }
                 }
                 i++;
@@ -142,30 +148,33 @@ public class Level extends JFrame {
 
     private void moveLeft() {
         if (checkVak(speler.getPosHorizontaal() -1, speler.getPosVerticaal())){
+            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()] = new Vak(this);
             speler.StapLinks();
         }
     }
 
     private void moveUp() {
         if (checkVak(speler.getPosHorizontaal(), speler.getPosVerticaal() - 1)){
+            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()] = new Vak(this);
             speler.StapBoven();
         }
     }
 
     private void moveRight() {
         if (checkVak(speler.getPosHorizontaal() +1, speler.getPosVerticaal())){
+            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()] = new Vak(this);
             speler.StapRechts();
         }
     }
 
     private void moveDown() {
         if (checkVak(speler.getPosHorizontaal(), speler.getPosVerticaal()+1)){
+            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()] = new Vak(this);
             speler.StapBeneden();
         }
     }
 
     class arrowListener implements KeyListener {
-
         @Override
         public void keyReleased(KeyEvent e) {
             switch (e.getKeyCode()) {

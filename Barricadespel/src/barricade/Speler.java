@@ -5,17 +5,22 @@
  */
 package barricade;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
 /**
  *
  * @author frank
  */
-public class Speler {
+public class Speler extends JLabel {
     private int PosHorizontaal = 0;
     private int PosVerticaal = 0;
+    private ImageIcon icon;
     
     public Speler(int PosHorizontaal, int PosVerticaal) {
         this.PosHorizontaal = PosHorizontaal;
         this.PosVerticaal = PosVerticaal;
+        this.icon = new ImageIcon(getClass().getResource("images/SpelerVoor.png"));
     }
     
     public int getPosHorizontaal() {
@@ -28,17 +33,29 @@ public class Speler {
     
     public void StapRechts() {
         this.PosHorizontaal++;
+        this.icon = new ImageIcon(getClass().getResource("images/SpelerRechts.png"));
+        showMe();
     }
     
     public void StapLinks() {
         this.PosHorizontaal--;
+        this.icon = new ImageIcon(getClass().getResource("images/SpelerLinks.png"));
+        showMe();
     }
     
     public void StapBeneden() {
         this.PosVerticaal++;
+        this.icon = new ImageIcon(getClass().getResource("images/SpelerVoor.png"));
+        showMe();
     }
     
     public void StapBoven() {
         this.PosVerticaal--;
+        this.icon = new ImageIcon(getClass().getResource("images/SpelerVoor.png"));
+        showMe();
+    }
+    
+    public void showMe() {
+        this.setIcon(this.icon);
     }
 }

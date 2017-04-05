@@ -14,7 +14,6 @@ import javax.swing.JLabel;
  * @author W. Kuik
  */
 public class Vak extends JLabel {
-
     private Icon icon;
     private Level level;
 
