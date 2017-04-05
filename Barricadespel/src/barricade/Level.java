@@ -33,6 +33,20 @@ public class Level extends JFrame {
     }
 
     private void laadLevel(int levelNr) {
+        //vm1vvvv555vvvv68v555vv1vvvv336vm1vvvv555vm11mmm515v21vvvm15vvm1mm3mmvvvm1551vvvv7m15vvvmvvvm15vvvmvf
+        //v is een leeg vakje
+        //m is een muur
+        //1 is een baricade met nummer 1
+        //2 is een baricade met nummer 2
+        //3 is een baricade met nummer 3
+        //4 is een baricade met nummer 4
+        //5 is een baricade met nummer 5
+        //6 is een sleutel met nummer 1
+        //7 is een sleutel met nummer 2
+        //8 is een sleutel met nummer 3
+        //9 is een sleutel met nummer 4
+        //0 is een sleutel met nummer 5
+        //f is finish
         switch (levelNr) {
             case 1:
 

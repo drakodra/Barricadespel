@@ -48,7 +48,7 @@ public class Barricade extends Vak {
     @Override
     public boolean loopBaar(){
         return geopend;
-    }
+    }//met speler onderhandelen
     
     @Override
     public int getBarricadeNr(){
