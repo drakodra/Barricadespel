@@ -19,7 +19,8 @@ public class Sleutel extends Vak {
     private int sleutelNr;
     private boolean opgepakt;
 
-    public Sleutel(int sleutelNr) {
+    public Sleutel(Level level, int sleutelNr) {
+        super(level);
         switch (sleutelNr){
             case 1:
                 this.iconSleutel = new ImageIcon(getClass().getResource("Sleutel100.png"));
@@ -51,11 +52,6 @@ public class Sleutel extends Vak {
     }
 
     @Override
-    public boolean loopBaar() {
-        return true;
-    }
-
-    @Override
     public int getSleutelNr() {
         if (opgepakt) {
             return 0;
@@ -64,10 +60,5 @@ public class Sleutel extends Vak {
             showMe();
             return sleutelNr;
         }
-    }
-
-    @Override
-    public int getBarricadeNr() {
-        return 0;
     }
 }

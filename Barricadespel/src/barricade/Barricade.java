@@ -13,9 +13,11 @@ public class Barricade extends Vak {
     private Icon iconGesloten;
     private Icon iconGeopend;
     private int barricadeNr;
-    boolean geopend;
+    private boolean geopend;
     
-    public Barricade(int barricadeNr){
+    
+    public Barricade(Level level, int barricadeNr){
+        super(level);
         switch (barricadeNr){
             case 1: 
                 this.iconGesloten = new ImageIcon(getClass().getResource("Barricade100.png"));
@@ -46,11 +48,6 @@ public class Barricade extends Vak {
     @Override
     public boolean loopBaar(){
         return geopend;
-    }
-    
-    @Override
-    public int getSleutelNr(){
-        return 0;
     }
     
     @Override
