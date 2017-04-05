@@ -15,12 +15,12 @@ import javax.swing.JLabel;
 public class Speler extends JLabel {
     private int PosHorizontaal = 0;
     private int PosVerticaal = 0;
-    private ImageIcon icon;
+    private ImageIcon icon = new ImageIcon(getClass().getResource("images/SpelerVoor.png"));;
+    private int sleutelNr;
     
     public Speler(int PosHorizontaal, int PosVerticaal) {
         this.PosHorizontaal = PosHorizontaal;
         this.PosVerticaal = PosVerticaal;
-        this.icon = new ImageIcon(getClass().getResource("images/SpelerVoor.png"));
     }
     
     public int getPosHorizontaal() {
@@ -57,5 +57,9 @@ public class Speler extends JLabel {
     
     public void showMe() {
         this.setIcon(this.icon);
+    }
+    
+    public void setSleutel(int sleutel) {
+        this.sleutelNr = sleutel;
     }
 }

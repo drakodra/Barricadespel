@@ -27,7 +27,7 @@ public class Muur extends Vak{
     }
     
     @Override
-    public boolean loopBaar(){
+    public boolean loopBaar(Speler speler){
         return false;
     } 
 }

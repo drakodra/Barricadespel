@@ -15,7 +15,6 @@ import javax.swing.ImageIcon;
 public class Sleutel extends Vak {
 
     private Icon iconSleutel;
-    private Icon iconOpgepakt;
     private int sleutelNr;
     private boolean opgepakt;
 
@@ -37,19 +36,19 @@ public class Sleutel extends Vak {
             case 5:
                 this.iconSleutel = new ImageIcon(getClass().getResource("images/Sleutel500.png"));
         }
+        
         this.sleutelNr = sleutelNr;
         this.opgepakt = false;
-        this.iconOpgepakt = new ImageIcon(getClass().getResource("images/Vak.png"));
         showMe();
+    }
+    
+    public void sleutelPakken() {
+       this.opgepakt = true;
     }
 
     @Override
     public void showMe() {
-        if (opgepakt) {
-            this.setIcon(iconOpgepakt);
-        } else {
-            this.setIcon(iconSleutel);
-        }
+        this.setIcon(iconSleutel);
     }
 
 

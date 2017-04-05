@@ -7,6 +7,7 @@ package barricade;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -58,7 +59,7 @@ public class Level extends JFrame {
 
     public boolean checkVak(int rij, int kolom) {
         if ((rij > -1 && rij < 10) && (kolom > -1 && kolom < 10)) {
-            return vak[rij][kolom].loopBaar();
+            return vak[rij][kolom].loopBaar(speler);
         } else {
             return false;
         }
@@ -95,8 +96,10 @@ public class Level extends JFrame {
                             vak[rij][kolom] = new Finish(this);
                         break;
                         case 's':
-                            vak[rij][kolom] = new Vak(this);
                             this.speler = new Speler(rij,kolom);
+                            ImageIcon icon = new ImageIcon(getClass().getResource("images/SpelerVoor.png"));
+                            vak[rij][kolom] = new Vak(this);
+                            vak[rij][kolom].setIcon(icon);
                         break;
                         case '0':
                             vak[rij][kolom] = new Sleutel(this, 5);
@@ -148,29 +151,33 @@ public class Level extends JFrame {
 
     private void moveLeft() {
         if (checkVak(speler.getPosHorizontaal() -1, speler.getPosVerticaal())){
-            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()] = new Vak(this);
+            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].setIcon(new ImageIcon(getClass().getResource("images/Vak.png")));
             speler.StapLinks();
+            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].showIcon(speler.getIcon());
         }
     }
 
     private void moveUp() {
         if (checkVak(speler.getPosHorizontaal(), speler.getPosVerticaal() - 1)){
-            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()] = new Vak(this);
+            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].setIcon(new ImageIcon(getClass().getResource("images/Vak.png")));
             speler.StapBoven();
+            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].showIcon(speler.getIcon());
         }
     }
 
     private void moveRight() {
         if (checkVak(speler.getPosHorizontaal() +1, speler.getPosVerticaal())){
-            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()] = new Vak(this);
+            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].setIcon(new ImageIcon(getClass().getResource("images/Vak.png")));
             speler.StapRechts();
+            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].showIcon(speler.getIcon());
         }
     }
 
     private void moveDown() {
         if (checkVak(speler.getPosHorizontaal(), speler.getPosVerticaal()+1)){
-            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()] = new Vak(this);
+            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].setIcon(new ImageIcon(getClass().getResource("images/Vak.png")));
             speler.StapBeneden();
+            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].showIcon(speler.getIcon());
         }
     }
 
@@ -179,16 +186,16 @@ public class Level extends JFrame {
         public void keyReleased(KeyEvent e) {
             switch (e.getKeyCode()) {
                 case 37:
-                    moveLeft();
-                    break;
-                case 38:
                     moveUp();
                     break;
+                case 38:
+                    moveLeft();
+                    break;
                 case 39:
-                    moveRight();
+                    moveDown();
                     break;
                 case 40:
-                    moveDown();
+                    moveRight();                   
                     break;
             }
         }
