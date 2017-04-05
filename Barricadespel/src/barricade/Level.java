@@ -26,15 +26,14 @@ public class Level extends JFrame {
         this.aantalRijen = aantalRijen;
         speler = new Speler(0,0);
         laadLevel(levelNr);
-        maakLevel();
         initComponents();
         this.addKeyListener(new arrowListener());
-        
     }
 
     private void laadLevel(int levelNr) {
         //vm1vvvv555vvvv68v555vv1vvvv336vm1vvvv555vm11mmm515v21vvvm15vvm1mm3mmvvvm1551vvvv7m15vvvmvvvm15vvvmvf
         //v is een leeg vakje
+        //s is speler
         //m is een muur
         //1 is een baricade met nummer 1
         //2 is een baricade met nummer 2
@@ -47,11 +46,16 @@ public class Level extends JFrame {
         //9 is een sleutel met nummer 4
         //0 is een sleutel met nummer 5
         //f is finish
+        
+        String Layout ="";
+        
         switch (levelNr) {
             case 1:
-
-                break;
+               Layout = "vm1vvvv555vvvv68v555vv1vvvv336vm1vvvv555vm11mmm515v21vvvm15vvm1mm3mmvvvm1551vvvv7m15vvvmvvvm15vvvmvf";
+            break;
         }
+        
+        maakLevel(Layout);
     }
 
     public boolean checkVak(int rij, int kolom) {
@@ -74,12 +78,57 @@ public class Level extends JFrame {
             plaatsRij(i);
         }
     }
-
-    private void maakLevel() {
+   
+    private void maakLevel(String Layout) {
         vak = new Vak[aantalRijen][aantalRijen];
+        int i = 0;
         for (int rij = 0; rij < aantalRijen; rij++) {
             for (int kolom = 0; kolom < aantalRijen; kolom++) {
-                vak[rij][kolom] = new Vak(this);
+                if(i < Layout.length()) {
+                    char soort = Layout.charAt(i);
+                    switch (soort) {
+                        case 'v':
+                            vak[rij][kolom] = new Vak(this);
+                        break;
+                        case 'm':
+                            vak[rij][kolom] = new Muur(this);
+                        break;
+                        case 'f':
+                            vak[rij][kolom] = new Vak(this);
+                        break;
+                        case '0':
+                            vak[rij][kolom] = new Sleutel(this, 5);
+                        break;
+                        case '1':
+                            vak[rij][kolom] = new Barricade(this, 1);
+                        break;
+                        case '2':
+                            vak[rij][kolom] = new Barricade(this, 2);
+                        break;
+                        case '3':
+                            vak[rij][kolom] = new Barricade(this, 3);
+                        break;
+                        case '4':
+                            vak[rij][kolom] = new Barricade(this, 4);
+                        break;
+                        case '5':
+                            vak[rij][kolom] = new Barricade(this, 5);
+                        break;
+                        case '6':
+                            vak[rij][kolom] = new Sleutel(this, 1);
+                        break;
+                        case '7':
+                            vak[rij][kolom] = new Sleutel(this, 2);
+                        break;
+                        case '8':
+                            vak[rij][kolom] = new Sleutel(this, 3);
+                        break;
+                        case '9':
+                            vak[rij][kolom] = new Sleutel(this, 4);
+                        break;
+                    }
+                }
+                i++;
             }
         }
     }

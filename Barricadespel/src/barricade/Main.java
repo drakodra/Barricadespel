@@ -12,7 +12,7 @@ package barricade;
  */
 public class Main {
     public static void main(String[] args) {
-        Level level = new Level(10, 10);
+        Level level = new Level(1, 10);
         level.setVisible(true);
     }
 }
