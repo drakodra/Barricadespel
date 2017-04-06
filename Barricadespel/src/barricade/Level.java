@@ -89,7 +89,7 @@ public class Level extends JFrame {
         levelNummer.setLocation(locatie, 10);
         this.add(levelNummer);
         
-        labelSleutel.setText("SLEUTEL: " + 00);
+        labelSleutel.setText("SLEUTEL: " + "000");
         labelSleutel.setSize(100, SIZE);
         labelSleutel.setLocation(locatie, 30);
         this.add(labelSleutel);
