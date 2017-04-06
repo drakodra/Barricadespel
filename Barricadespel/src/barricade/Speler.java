@@ -33,25 +33,25 @@ public class Speler extends JLabel {
     
     public void StapRechts() {
         this.PosHorizontaal++;
-        this.icon = new ImageIcon(getClass().getResource("images/SpelerRechts.png"));
+        this.icon = new ImageIcon(getClass().getResource("images/SpelerVoor.png"));
         showMe();
     }
     
     public void StapLinks() {
         this.PosHorizontaal--;
-        this.icon = new ImageIcon(getClass().getResource("images/SpelerLinks.png"));
+        this.icon = new ImageIcon(getClass().getResource("images/SpelerVoor.png"));
         showMe();
     }
     
     public void StapBeneden() {
         this.PosVerticaal++;
-        this.icon = new ImageIcon(getClass().getResource("images/SpelerVoor.png"));
+        this.icon = new ImageIcon(getClass().getResource("images/SpelerRechts.png"));
         showMe();
     }
     
     public void StapBoven() {
         this.PosVerticaal--;
-        this.icon = new ImageIcon(getClass().getResource("images/SpelerVoor.png"));
+        this.icon = new ImageIcon(getClass().getResource("images/SpelerLinks.png"));
         showMe();
     }
     
