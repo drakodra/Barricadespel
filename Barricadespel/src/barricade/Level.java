@@ -137,7 +137,7 @@ public class Level extends JFrame {
                         break;
                         case 's':
                             this.speler = new Speler(rij,kolom);
-                            ImageIcon icon = new ImageIcon(getClass().getResource("images/SpelerVoor.png"));
+                            ImageIcon icon = new ImageIcon(getClass().getResource("images/SpelerLinks.png"));
                             vak[rij][kolom] = new Vak(this);
                             vak[rij][kolom].setIcon(icon);
                         break;

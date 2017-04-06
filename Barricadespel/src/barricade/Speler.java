@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 public class Speler extends JLabel {
     private int PosHorizontaal = 0;
     private int PosVerticaal = 0;
-    private ImageIcon icon = new ImageIcon(getClass().getResource("images/SpelerVoor.png"));;
+    private ImageIcon icon = new ImageIcon(getClass().getResource("images/SpelerLinks.png"));;
     private int sleutelNr;
     
     public Speler(int PosHorizontaal, int PosVerticaal) {
