@@ -5,10 +5,13 @@
  */
 package barricade;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -24,6 +27,7 @@ public class Level extends JFrame {
     private final int SIZE = 50;
     private Speler speler;
     private int levelNr = 1;
+    private ArrayList<String> Levels = new ArrayList();
 
     public Level(int levelNr, int aantalRijen) {
         this.aantalRijen = aantalRijen;
@@ -49,21 +53,16 @@ public class Level extends JFrame {
         //0 is een sleutel met nummer 5
         //f is finish
         
-        String Layout = "";
-        
-        switch (levelNr) {
-            case 1:
-               Layout = "sm1vvvv555vvvv68v555vv1vvvv336vm1vvvv555vm11mmm515v21vvvm15vvm1mm3mmvvvm1551vvvv7m15vvvmvvvm15vvvmvf";
-            break;
-            case 2:
-                Layout = "ms1vvvv555vvvv68v555vv1vvvv336vm1vvvv555vm11mmm515v21vvvm15vvm1mm3mmvvvm1551vvvv7m15vvvmvvvm15vvvmvf";
-            break;
-            default:
-                Layout = "sm1vvvv555vvvv68v555vv1vvvv336vm1vvvv555vm11mmm515v21vvvm15vvm1mm3mmvvvm1551vvvv7m15vvvmvvvm15vvvmvf";
-            break;    
+        this.Levels.add("sm1vvvv555vvvv68v555vv1vvvv336vm1vvvv555vm11mmm515v21vvvm15vvm1mm3mmvvvm1551vvvv7m15vvvmvvvm15vvvmvf");
+        this.Levels.add("mmm1svv555vvvv68v555vv1vvvv336vm1vvvv555vm11mmm515v21vvvm15vvm1mm3mmvvvm1551vvvv7m15vvvmvvvm15vvvmvf");
+        this.Levels.add("sv1vvvv555vvvv68v555vv1vvvv336vm1vvvv555vm11mmm515v21vvvm15vvm1mm3mmvvvm1551vvvv7m15vvvmvvvm15vvvmvf");
+
+        if(levelNr - 1 < 0) {
+            levelNr = 1;
         }
-        
-        maakLevel(Layout);
+
+        System.out.println(levelNr - 1);
+        maakLevel(Levels.get(levelNr - 1));
     }
 
     public boolean checkVak(int rij, int kolom) {
@@ -80,11 +79,29 @@ public class Level extends JFrame {
         this.setResizable(false);
         panel = new JPanel();
         panel.setLayout(null);
+        
+        int locatie = 530;
+        
+        for (int i = 0; i < this.Levels.size(); i++) {
+            plaatsButton(locatie , i);
+            locatie += 70;
+        }
+        
         this.add(panel);
 
         for (int i = 0; i < this.aantalRijen; i++) {
             plaatsRij(i);
         }
+    }
+    
+    private void plaatsButton(int locatie, int i) {
+        JButton button = new JButton();
+        button.addActionListener(new ClickListener());
+        button.setSize(SIZE, SIZE);
+        button.setLocation(locatie, 200);
+        button.setText(String.valueOf(i + 1));
+        button.setFocusable(false);
+        panel.add(button);
     }
    
     private void maakLevel(String Layout) {
@@ -165,7 +182,7 @@ public class Level extends JFrame {
             vak[rij][i].setLocation(SIZE * i, SIZE * rij);
         }
     }
-
+    
     private void moveLeft() {
         if (checkVak(speler.getPosHorizontaal() -1, speler.getPosVerticaal())){
             this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].setIcon(new ImageIcon(getClass().getResource("images/Vak.png")));
@@ -230,5 +247,19 @@ public class Level extends JFrame {
         public void keyPressed(KeyEvent e) {
             //wordt niet gebruikt
         }
+    }
+    
+    class ClickListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            startLevel(Integer.parseInt(e.getActionCommand()));
+        }
+    }
+    
+    public void startLevel(int levelNr) {
+        Level levelNieuw = new Level(levelNr, 10);
+        levelNieuw.setVisible(true);
+        this.dispose();
     }
 }
