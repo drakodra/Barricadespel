@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
  */
 public class Finish extends Vak{
     private Icon icon;
+    private boolean finish = true;
     
     public Finish(Level level){
        super(level);
@@ -28,6 +29,6 @@ public class Finish extends Vak{
     
     @Override
     public boolean loopBaar(Speler speler){
-        return false;
-    } 
+        return true;
+    }
 }

@@ -7,6 +7,7 @@ package barricade;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.awt.event.WindowEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -22,9 +23,11 @@ public class Level extends JFrame {
     private JPanel panel;
     private final int SIZE = 50;
     private Speler speler;
+    private int levelNr = 1;
 
     public Level(int levelNr, int aantalRijen) {
         this.aantalRijen = aantalRijen;
+        this.levelNr = levelNr;
         laadLevel(levelNr);
         initComponents();
         this.addKeyListener(new arrowListener());
@@ -52,6 +55,12 @@ public class Level extends JFrame {
             case 1:
                Layout = "sm1vvvv555vvvv68v555vv1vvvv336vm1vvvv555vm11mmm515v21vvvm15vvm1mm3mmvvvm1551vvvv7m15vvvmvvvm15vvvmvf";
             break;
+            case 2:
+                Layout = "ms1vvvv555vvvv68v555vv1vvvv336vm1vvvv555vm11mmm515v21vvvm15vvm1mm3mmvvvm1551vvvv7m15vvvmvvvm15vvvmvf";
+            break;
+            default:
+                Layout = "sm1vvvv555vvvv68v555vv1vvvv336vm1vvvv555vm11mmm515v21vvvm15vvm1mm3mmvvvm1551vvvv7m15vvvmvvvm15vvvmvf";
+            break;    
         }
         
         maakLevel(Layout);
@@ -140,6 +149,14 @@ public class Level extends JFrame {
             }
         }
     }
+    
+    private void checkWinnaar(Speler speler) {
+        if (vak[speler.getPosHorizontaal()][speler.getPosVerticaal()] instanceof Finish) {
+            Level levelNieuw = new Level(this.levelNr + 1, 10);
+            levelNieuw.setVisible(true);
+            this.dispose();
+        }
+    }
 
     private void plaatsRij(int rij) {
         for (int i = 0; i < this.aantalRijen; i++) {
@@ -154,6 +171,7 @@ public class Level extends JFrame {
             this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].setIcon(new ImageIcon(getClass().getResource("images/Vak.png")));
             speler.StapLinks();
             this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].showIcon(speler.getIcon());
+            checkWinnaar(speler);
         }
     }
 
@@ -162,6 +180,7 @@ public class Level extends JFrame {
             this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].setIcon(new ImageIcon(getClass().getResource("images/Vak.png")));
             speler.StapBoven();
             this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].showIcon(speler.getIcon());
+            checkWinnaar(speler);
         }
     }
 
@@ -170,6 +189,7 @@ public class Level extends JFrame {
             this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].setIcon(new ImageIcon(getClass().getResource("images/Vak.png")));
             speler.StapRechts();
             this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].showIcon(speler.getIcon());
+            checkWinnaar(speler);
         }
     }
 
@@ -178,6 +198,7 @@ public class Level extends JFrame {
             this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].setIcon(new ImageIcon(getClass().getResource("images/Vak.png")));
             speler.StapBeneden();
             this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].showIcon(speler.getIcon());
+            checkWinnaar(speler);
         }
     }
 
@@ -209,6 +230,5 @@ public class Level extends JFrame {
         public void keyPressed(KeyEvent e) {
             //wordt niet gebruikt
         }
-
     }
 }
