@@ -29,6 +29,7 @@ public class Level extends JFrame {
     private Speler speler;
     private int levelNr = 1;
     private ArrayList<String> Levels = new ArrayList();
+    private JLabel labelSleutel = new JLabel();
 
     public Level(int levelNr, int aantalRijen) {
         this.aantalRijen = aantalRijen;
@@ -82,10 +83,21 @@ public class Level extends JFrame {
         panel = new JPanel();
         panel.setLayout(null);
         
+        JLabel levelNummer = new JLabel();
+        levelNummer.setText("LEVEL " + this.levelNr);
+        levelNummer.setSize(100, SIZE);
+        levelNummer.setLocation(locatie, 10);
+        this.add(levelNummer);
+        
+        labelSleutel.setText("SLEUTEL: " + 00);
+        labelSleutel.setSize(100, SIZE);
+        labelSleutel.setLocation(locatie, 30);
+        this.add(labelSleutel);
+        
         JButton resetButton = new JButton();
         resetButton.addActionListener(new ClickListener());
         resetButton.setSize(280, 50);
-        resetButton.setLocation(locatie, 50);
+        resetButton.setLocation(locatie, 450);
         resetButton.setText("RESET");
         resetButton.setFocusable(false);
         panel.add(resetButton);
@@ -181,6 +193,10 @@ public class Level extends JFrame {
         }
     }
     
+    private void updateSleutel(Speler speler) {
+        this.labelSleutel.setText("SLEUTEL: " + String.valueOf(speler.getSleutel()) + "00");
+    }
+    
     private void checkWinnaar(Speler speler) {
         if (vak[speler.getPosHorizontaal()][speler.getPosVerticaal()] instanceof Finish) {
             Level levelNieuw = new Level(this.levelNr + 1, 10);
@@ -203,6 +219,7 @@ public class Level extends JFrame {
             speler.StapLinks();
             this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].showIcon(speler.getIcon());
             checkWinnaar(speler);
+            updateSleutel(speler);
         }
     }
 
@@ -212,6 +229,7 @@ public class Level extends JFrame {
             speler.StapBoven();
             this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].showIcon(speler.getIcon());
             checkWinnaar(speler);
+            updateSleutel(speler);
         }
     }
 
@@ -221,6 +239,7 @@ public class Level extends JFrame {
             speler.StapRechts();
             this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].showIcon(speler.getIcon());
             checkWinnaar(speler);
+            updateSleutel(speler);
         }
     }
 
@@ -230,6 +249,7 @@ public class Level extends JFrame {
             speler.StapBeneden();
             this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].showIcon(speler.getIcon());
             checkWinnaar(speler);
+            updateSleutel(speler);
         }
     }
 
