@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -61,7 +62,6 @@ public class Level extends JFrame {
             levelNr = 1;
         }
 
-        System.out.println(levelNr - 1);
         maakLevel(Levels.get(levelNr - 1));
     }
 
@@ -74,13 +74,27 @@ public class Level extends JFrame {
     }
 
     private void initComponents() {
+        int locatie = 530;
+       
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(850, 550);
         this.setResizable(false);
         panel = new JPanel();
         panel.setLayout(null);
         
-        int locatie = 530;
+        JButton resetButton = new JButton();
+        resetButton.addActionListener(new ClickListener());
+        resetButton.setSize(280, 50);
+        resetButton.setLocation(locatie, 50);
+        resetButton.setText("RESET");
+        resetButton.setFocusable(false);
+        panel.add(resetButton);
+        
+        JLabel labelLevel = new JLabel();
+        labelLevel.setText("LEVELS:");
+        labelLevel.setSize(SIZE, SIZE);
+        labelLevel.setLocation(locatie, 150);
+        this.add(labelLevel);
         
         for (int i = 0; i < this.Levels.size(); i++) {
             plaatsButton(locatie , i);
