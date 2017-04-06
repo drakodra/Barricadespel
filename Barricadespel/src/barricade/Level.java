@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author W. Kuik
+ * @author frank
  */
 public class Level extends JFrame {
 
@@ -213,6 +213,11 @@ public class Level extends JFrame {
     
     private void checkWinnaar(Speler speler) {
         if (vak[speler.getPosHorizontaal()][speler.getPosVerticaal()] instanceof Finish) {
+            
+            if (this.levelNr + 1 > this.Levels.size()) {
+                this.levelNr = 0;
+            }
+            
             Level levelNieuw = new Level(this.levelNr + 1, 10);
             levelNieuw.setVisible(true);
             this.dispose();
