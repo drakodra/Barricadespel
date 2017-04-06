@@ -267,12 +267,22 @@ public class Level extends JFrame {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            startLevel(Integer.parseInt(e.getActionCommand()));
+            if (!e.getActionCommand().equals("RESET")) {
+                startLevel(Integer.parseInt(e.getActionCommand()));
+            } else {
+                startLevel();
+            }
         }
     }
     
     public void startLevel(int levelNr) {
         Level levelNieuw = new Level(levelNr, 10);
+        levelNieuw.setVisible(true);
+        this.dispose();
+    }
+    
+    public void startLevel() {
+        Level levelNieuw = new Level(this.levelNr, 10);
         levelNieuw.setVisible(true);
         this.dispose();
     }
