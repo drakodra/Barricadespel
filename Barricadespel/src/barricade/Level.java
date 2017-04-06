@@ -59,6 +59,7 @@ public class Level extends JFrame {
         this.Levels.add("mmm1svv555vvvv68v555vv1vvvv336vm1vvvv555vm11mmm515v21vvvm15vvm1mm3mmvvvm1551vvvv7m15vvvmvvvm15vvvmvf");
         this.Levels.add("sv1vvvv555vvvv68v555vv1vvvv336vm1vvvv555vm11mmm515v21vvvm15vvm1mm3mmvvvm1551vvvv7m15vvvmvvvm15vvvmvf");
         this.Levels.add("mmm7mvvvmfm8m3mvmvmvmv1vm0mvm5mvmmmmmvmvmvv9mmmvmvmvmvmvvvvvmvmv2vmmmvmvmmmmv8m6svv4vmvmmvmmmm6mvv1v");
+        
         if(levelNr - 1 < 0 || levelNr > this.Levels.size()) {
             levelNr = 1;
         }
@@ -93,6 +94,19 @@ public class Level extends JFrame {
         labelSleutel.setSize(100, SIZE);
         labelSleutel.setLocation(locatie, 30);
         this.add(labelSleutel);
+        
+        JLabel LabelTurtorial1 = new JLabel();
+        LabelTurtorial1.setText("Gebruik de pijltjes toetsen om te spelen.");
+        LabelTurtorial1.setSize(300, SIZE);
+        LabelTurtorial1.setLocation(locatie, 70);
+        this.add(LabelTurtorial1);
+        
+        JLabel LabelTurtorial2 = new JLabel();
+        LabelTurtorial2.setText("Probeer bij het groene vakje te komen.");
+        LabelTurtorial2.setSize(300, SIZE);
+        LabelTurtorial2.setLocation(locatie, 90);
+        this.add(LabelTurtorial2);
+        
         
         JButton resetButton = new JButton();
         resetButton.addActionListener(new ClickListener());
@@ -149,7 +163,7 @@ public class Level extends JFrame {
                         break;
                         case 's':
                             this.speler = new Speler(rij,kolom);
-                            ImageIcon icon = new ImageIcon(getClass().getResource("images/SpelerRechts1.png"));
+                            ImageIcon icon = new ImageIcon(getClass().getResource("images/SpelerRechts.png"));
                             vak[rij][kolom] = new Vak(this);
                             vak[rij][kolom].setIcon(icon);
                         break;
