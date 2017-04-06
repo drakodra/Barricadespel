@@ -16,17 +16,28 @@ public class Finish extends Vak{
     private Icon icon;
     private boolean finish = true;
     
+    /**
+     * Constructor Finish.
+     * @param level
+     */
     public Finish(Level level){
        super(level);
        this.icon = new ImageIcon(getClass().getResource("images/Eindveld.png"));
        showMe();
     }
     
+    /**
+     * Zet icon.
+     */
     @Override
     public void showMe() {
         this.setIcon(this.icon);
     }
     
+    /**
+     * Returned of het vakje loopbaar is.
+     * @return 
+     */
     @Override
     public boolean loopBaar(Speler speler){
         return true;

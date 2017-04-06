@@ -11,6 +11,11 @@ package barricade;
  * @author frank
  */
 public class Main {
+
+    /**
+     * Start.
+     * @param args
+     */
     public static void main(String[] args) {
         Level level = new Level(1, 10);
         level.setVisible(true);

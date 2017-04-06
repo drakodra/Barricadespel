@@ -8,13 +8,20 @@ package barricade;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
-
+/**
+ *
+ * @author frank
+ */
 public class Barricade extends Vak {
     private Icon iconGesloten;
     private int barricadeNr;
     private boolean geopend;
     
-    
+    /**
+     * Constructor barricade.
+     * @param level
+     * @param barricadeNr
+     */
     public Barricade(Level level, int barricadeNr){
         super(level);
         switch (barricadeNr){
@@ -40,11 +47,18 @@ public class Barricade extends Vak {
         showMe();
     }
     
+    /**
+     * Zet icon.
+     */
     @Override
     public void showMe(){
         this.setIcon(this.iconGesloten);
     }
     
+    /**
+     * Returned of het vakje loopbaar is en/of de goede sleutel
+     * @return 
+     */
     @Override
     public boolean loopBaar(Speler speler){
         if(this.geopend != true) {
@@ -54,11 +68,15 @@ public class Barricade extends Vak {
             } else {
                 return false;
             }
-        } else {
-            return true;
-        }
+        } 
+            
+        return true;
     }
     
+    /**
+     * Returned barricadeNr.
+     * @return 
+     */
     @Override
     public int getBarricadeNr(){
         return barricadeNr;

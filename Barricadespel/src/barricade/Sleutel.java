@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author W. Kuik
+ * @author frank
  */
 public class Sleutel extends Vak {
 
@@ -18,6 +18,11 @@ public class Sleutel extends Vak {
     private int sleutelNr;
     private boolean opgepakt;
 
+    /**
+     * Constructor Sleutel.
+     * @param level
+     * @param sleutelNr
+     */
     public Sleutel(Level level, int sleutelNr) {
         super(level);
         switch (sleutelNr){
@@ -43,6 +48,11 @@ public class Sleutel extends Vak {
         showMe();
     }
     
+    /**
+     * Checken of vak loopbaar is.
+     * @param speler
+     * @return
+     */
     @Override
     public boolean loopBaar(Speler speler) {    
         if(this.opgepakt == false) {
@@ -53,10 +63,16 @@ public class Sleutel extends Vak {
         return true;
     }
     
+    /**
+     * update sleutelopgepake.
+     */
     public void setOpgepakt() {
        this.opgepakt = true;
     }
 
+    /**
+     * set icon
+     */
     @Override
     public void showMe() {
         this.setIcon(iconSleutel);
