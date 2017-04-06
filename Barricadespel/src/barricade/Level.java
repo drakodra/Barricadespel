@@ -58,7 +58,7 @@ public class Level extends JFrame {
         this.Levels.add("mmm1svv555vvvv68v555vv1vvvv336vm1vvvv555vm11mmm515v21vvvm15vvm1mm3mmvvvm1551vvvv7m15vvvmvvvm15vvvmvf");
         this.Levels.add("sv1vvvv555vvvv68v555vv1vvvv336vm1vvvv555vm11mmm515v21vvvm15vvm1mm3mmvvvm1551vvvv7m15vvvmvvvm15vvvmvf");
 
-        if(levelNr - 1 < 0) {
+        if(levelNr - 1 < 0 || levelNr > this.Levels.size()) {
             levelNr = 1;
         }
 
