@@ -5,6 +5,7 @@
  */
 package barricade;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -15,7 +16,11 @@ import javax.swing.JLabel;
 public class Speler extends JLabel {
     private int PosHorizontaal = 0;
     private int PosVerticaal = 0;
-    private ImageIcon icon = new ImageIcon(getClass().getResource("images/SpelerRechts.png"));;
+    private Icon icon;
+    private ImageIcon rechts = new ImageIcon(getClass().getResource("images/SpelerRechts.png"));
+    private ImageIcon links = new ImageIcon(getClass().getResource("images/SpelerLinks.png"));
+    private ImageIcon boven = new ImageIcon(getClass().getResource("images/SpelerBoven.png"));
+    private ImageIcon beneden = new ImageIcon(getClass().getResource("images/SpelerBeneden.png"));
     private int sleutelNr;
     
     /**
@@ -49,7 +54,7 @@ public class Speler extends JLabel {
      */
     public void StapRechts() {
         this.PosHorizontaal++;
-        this.icon = new ImageIcon(getClass().getResource("images/SpelerRechts.png"));
+        this.icon = rechts;
         showMe();
     }
     
@@ -58,7 +63,7 @@ public class Speler extends JLabel {
      */
     public void StapLinks() {
         this.PosHorizontaal--;
-        this.icon = new ImageIcon(getClass().getResource("images/SpelerRechts1.png"));
+        this.icon = links;
         showMe();
     }
     
@@ -67,7 +72,7 @@ public class Speler extends JLabel {
      */
     public void StapBeneden() {
         this.PosVerticaal++;
-        this.icon = new ImageIcon(getClass().getResource("images/SpelerBeneden.png"));
+        this.icon = beneden;
         showMe();
     }
     
@@ -76,7 +81,7 @@ public class Speler extends JLabel {
      */
     public void StapBoven() {
         this.PosVerticaal--;
-        this.icon = new ImageIcon(getClass().getResource("images/SpelerBoven.png"));
+        this.icon = boven;
         showMe();
     }
     

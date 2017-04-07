@@ -14,7 +14,7 @@ import javax.swing.JLabel;
  * @author frank
  */
 public class Vak extends JLabel {
-    private Icon icon = new ImageIcon(getClass().getResource("images/Vak.png"));
+    private Icon icon;
     private Level level;
 
     /**
@@ -41,14 +41,6 @@ public class Vak extends JLabel {
      */
     public boolean loopBaar(Speler speler) {
         return true;
-    }
-
-    /**
-     * Returned of het een barricade is.
-     * @return
-     */
-    public int getBarricadeNr() {
-        return 0;
     }
     
     /**

@@ -12,20 +12,21 @@ import javax.swing.ImageIcon;
  *
  * @author frank
  */
-public class Finish extends Vak{
+public class Finish extends Vak {
+
     private Icon icon;
-    private boolean finish = true;
-    
+
     /**
      * Constructor Finish.
+     *
      * @param level
      */
-    public Finish(Level level){
-       super(level);
-       this.icon = new ImageIcon(getClass().getResource("images/Eindveld.png"));
-       showMe();
+    public Finish(Level level) {
+        super(level);
+        this.icon = new ImageIcon(getClass().getResource("images/Eindveld.png"));
+        showMe();
     }
-    
+
     /**
      * Zet icon.
      */
@@ -33,13 +34,14 @@ public class Finish extends Vak{
     public void showMe() {
         this.setIcon(this.icon);
     }
-    
+
     /**
      * Returned of het vakje loopbaar is.
-     * @return 
+     *
+     * @return
      */
     @Override
-    public boolean loopBaar(Speler speler){
+    public boolean loopBaar(Speler speler) {
         return true;
     }
 }

@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -30,9 +31,11 @@ public class Level extends JFrame {
     private int levelNr = 1;
     private ArrayList<String> Levels = new ArrayList();
     private JLabel labelSleutel = new JLabel();
+    private Icon leegVakicon;
 
     /**
      * Constructor level.
+     *
      * @param levelNr
      * @param aantalRijen
      */
@@ -43,43 +46,43 @@ public class Level extends JFrame {
         initComponents();
         this.addKeyListener(new arrowListener());
     }
-    
+
     /**
      * Plaatst alle componenten op de form
-     * 
+     *
      */
     private void initComponents() {
         int locatie = 530;
-       
+
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setSize(850, 550);
         this.setResizable(false);
         panel = new JPanel();
         panel.setLayout(null);
-        
+
         JLabel levelNummer = new JLabel();
         levelNummer.setText("LEVEL " + this.levelNr);
         levelNummer.setSize(100, SIZE);
         levelNummer.setLocation(locatie, 10);
         this.add(levelNummer);
-        
+
         labelSleutel.setText("SLEUTEL: " + "000");
         labelSleutel.setSize(100, SIZE);
         labelSleutel.setLocation(locatie, 30);
         this.add(labelSleutel);
-        
+
         JLabel LabelTurtorial1 = new JLabel();
         LabelTurtorial1.setText("Gebruik de pijltjes toetsen om te spelen.");
         LabelTurtorial1.setSize(300, SIZE);
         LabelTurtorial1.setLocation(locatie, 70);
         this.add(LabelTurtorial1);
-        
+
         JLabel LabelTurtorial2 = new JLabel();
         LabelTurtorial2.setText("Probeer bij het groene vakje te komen.");
         LabelTurtorial2.setSize(300, SIZE);
         LabelTurtorial2.setLocation(locatie, 90);
         this.add(LabelTurtorial2);
-        
+
         JButton resetButton = new JButton();
         resetButton.addActionListener(new ClickListener());
         resetButton.setSize(280, 50);
@@ -87,28 +90,30 @@ public class Level extends JFrame {
         resetButton.setText("RESET");
         resetButton.setFocusable(false);
         panel.add(resetButton);
-        
+
         JLabel labelLevel = new JLabel();
         labelLevel.setText("LEVELS:");
         labelLevel.setSize(SIZE, SIZE);
         labelLevel.setLocation(locatie, 150);
         this.add(labelLevel);
-        
+
         for (int i = 0; i < this.Levels.size(); i++) {
-            plaatsButton(locatie , i);
+            plaatsButton(locatie, i);
             locatie += 70;
         }
-        
+
         this.add(panel);
 
         for (int i = 0; i < this.aantalRijen; i++) {
             plaatsRij(i);
         }
+
+        this.leegVakicon = new ImageIcon(getClass().getResource("images/Vak.png"));
     }
 
     /**
-     *  Haald de levels op.
-     * 
+     * Haald de levels op.
+     *
      */
     private void laadLevel(int levelNr) {
         //v is een leeg vakje
@@ -125,13 +130,13 @@ public class Level extends JFrame {
         //9 is een sleutel met nummer 4
         //0 is een sleutel met nummer 5
         //f is finish
-        
+
         this.Levels.add("sm1vvvv555vvvv68v555vv1vvvv336vm1vvvv555vm11mmm515v21vvvm15vvm1mm3mmvvvm1551vvvv7m15vvvmvvvm15vvvmvf");
         this.Levels.add("mmm1svv555vvvv68v555vv1vvvv336vm1vvvv555vm11mmm515v21vvvm15vvm1mm3mmvvvm1551vvvv7m15vvvmvvvm15vvvmvf");
         this.Levels.add("sv1vvvv555vvvv68v555vv1vvvv336vm1vvvv555vm11mmm515v21vvvm15vvm1mm3mmvvvm1551vvvv7m15vvvmvvvm15vvvmvf");
         this.Levels.add("mmm7mvvvmfm8m3mvmvmvmv1vm0mvm5mvmmmmmvmvmvv9mmmvmvmvmvmvvvvvmvmv2vmmmvmvmmmmv8m6svv4vmvmmvmmmm6mvv1v");
-        
-        if(levelNr - 1 < 0 || levelNr > this.Levels.size()) {
+
+        if (levelNr - 1 < 0 || levelNr > this.Levels.size()) {
             levelNr = 1;
         }
 
@@ -140,6 +145,7 @@ public class Level extends JFrame {
 
     /**
      * Checked of het vak loopbaar is.
+     *
      * @param rij
      * @param kolom
      * @return
@@ -151,10 +157,10 @@ public class Level extends JFrame {
             return false;
         }
     }
-    
+
     /**
-     *  Maakt een knop aan.
-     * 
+     * Maakt een knop aan.
+     *
      */
     private void plaatsButton(int locatie, int i) {
         JButton button = new JButton();
@@ -165,93 +171,92 @@ public class Level extends JFrame {
         button.setFocusable(false);
         panel.add(button);
     }
-   
+
     /**
-     *  Sorteerd de String en bouwt het level.
-     * 
+     * Sorteerd de String en bouwt het level.
+     *
      */
     private void maakLevel(String Layout) {
         vak = new Vak[aantalRijen][aantalRijen];
         int i = 0;
         for (int rij = 0; rij < aantalRijen; rij++) {
             for (int kolom = 0; kolom < aantalRijen; kolom++) {
-                if(i < Layout.length()) {
+                if (i < Layout.length()) {
                     char soort = Layout.charAt(i);
                     switch (soort) {
                         case 'v':
                             vak[rij][kolom] = new Vak(this);
-                        break;
+                            break;
                         case 'm':
                             vak[rij][kolom] = new Muur(this);
-                        break;
+                            break;
                         case 'f':
                             vak[rij][kolom] = new Finish(this);
-                        break;
+                            break;
                         case 's':
-                            this.speler = new Speler(rij,kolom);
-                            ImageIcon icon = new ImageIcon(getClass().getResource("images/SpelerRechts.png"));
+                            this.speler = new Speler(rij, kolom);
                             vak[rij][kolom] = new Vak(this);
-                            vak[rij][kolom].setIcon(icon);
-                        break;
+                            vak[rij][kolom].setIcon(this.leegVakicon);
+                            break;
                         case '1':
                             vak[rij][kolom] = new Barricade(this, 1);
-                        break;
+                            break;
                         case '2':
                             vak[rij][kolom] = new Barricade(this, 2);
-                        break;
+                            break;
                         case '3':
                             vak[rij][kolom] = new Barricade(this, 3);
-                        break;
+                            break;
                         case '4':
                             vak[rij][kolom] = new Barricade(this, 4);
-                        break;
+                            break;
                         case '5':
                             vak[rij][kolom] = new Barricade(this, 5);
-                        break;
+                            break;
                         case '6':
                             vak[rij][kolom] = new Sleutel(this, 1);
-                        break;
+                            break;
                         case '7':
                             vak[rij][kolom] = new Sleutel(this, 2);
-                        break;
+                            break;
                         case '8':
                             vak[rij][kolom] = new Sleutel(this, 3);
-                        break;
+                            break;
                         case '9':
                             vak[rij][kolom] = new Sleutel(this, 4);
-                        break;
+                            break;
                         case '0':
                             vak[rij][kolom] = new Sleutel(this, 5);
-                        break;
+                            break;
                         default:
                             vak[rij][kolom] = new Vak(this);
-                        break;
+                            break;
                     }
                 }
                 i++;
             }
         }
     }
-    
+
     /**
-     *  Update sleutel label
-     * 
+     * Update sleutel label
+     *
      */
     private void updateSleutel(Speler speler) {
         this.labelSleutel.setText("SLEUTEL: " + String.valueOf(speler.getSleutel()) + "00");
     }
-    
+
     /**
-     *  Checked of de speler het level heeft gehaald.
-     * 
+     * Checked of de speler het level heeft gehaald.
+     *
      */
     private void checkWinnaar(Speler speler) {
         if (vak[speler.getPosHorizontaal()][speler.getPosVerticaal()] instanceof Finish) {
-            
+
             if (this.levelNr + 1 > this.Levels.size()) {
                 this.levelNr = 0;
             }
-            
+
             Level levelNieuw = new Level(this.levelNr + 1, 10);
             levelNieuw.setVisible(true);
             this.dispose();
@@ -259,8 +264,8 @@ public class Level extends JFrame {
     }
 
     /**
-     *  Plaatst een rij.
-     * 
+     * Plaatst een rij.
+     *
      */
     private void plaatsRij(int rij) {
         for (int i = 0; i < this.aantalRijen; i++) {
@@ -269,14 +274,14 @@ public class Level extends JFrame {
             vak[rij][i].setLocation(SIZE * i, SIZE * rij);
         }
     }
-    
+
     /**
-     *  Speler plaats naar links.
-     * 
+     * Speler plaats naar links.
+     *
      */
     private void moveLeft() {
-        if (checkVak(speler.getPosHorizontaal() -1, speler.getPosVerticaal())){
-            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].setIcon(new ImageIcon(getClass().getResource("images/Vak.png")));
+        if (checkVak(speler.getPosHorizontaal() - 1, speler.getPosVerticaal())) {
+            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].setIcon(this.leegVakicon);
             speler.StapLinks();
             this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].showIcon(speler.getIcon());
             checkWinnaar(speler);
@@ -285,12 +290,12 @@ public class Level extends JFrame {
     }
 
     /**
-     *  Speler plaats naar boven
-     * 
+     * Speler plaats naar boven
+     *
      */
     private void moveUp() {
-        if (checkVak(speler.getPosHorizontaal(), speler.getPosVerticaal() - 1)){
-            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].setIcon(new ImageIcon(getClass().getResource("images/Vak.png")));
+        if (checkVak(speler.getPosHorizontaal(), speler.getPosVerticaal() - 1)) {
+            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].setIcon(this.leegVakicon);
             speler.StapBoven();
             this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].showIcon(speler.getIcon());
             checkWinnaar(speler);
@@ -299,12 +304,12 @@ public class Level extends JFrame {
     }
 
     /**
-     *  Speler plaats naar rechts.
-     * 
+     * Speler plaats naar rechts.
+     *
      */
     private void moveRight() {
-        if (checkVak(speler.getPosHorizontaal() +1, speler.getPosVerticaal())){
-            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].setIcon(new ImageIcon(getClass().getResource("images/Vak.png")));
+        if (checkVak(speler.getPosHorizontaal() + 1, speler.getPosVerticaal())) {
+            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].setIcon(this.leegVakicon);
             speler.StapRechts();
             this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].showIcon(speler.getIcon());
             checkWinnaar(speler);
@@ -313,12 +318,12 @@ public class Level extends JFrame {
     }
 
     /**
-     *  Speler plaats naar beneden.
-     * 
+     * Speler plaats naar beneden.
+     *
      */
     private void moveDown() {
-        if (checkVak(speler.getPosHorizontaal(), speler.getPosVerticaal()+1)){
-            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].setIcon(new ImageIcon(getClass().getResource("images/Vak.png")));
+        if (checkVak(speler.getPosHorizontaal(), speler.getPosVerticaal() + 1)) {
+            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].setIcon(this.leegVakicon);
             speler.StapBeneden();
             this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].showIcon(speler.getIcon());
             checkWinnaar(speler);
@@ -327,10 +332,11 @@ public class Level extends JFrame {
     }
 
     /**
-     *  Keylistener voor pijltjes.
-     * 
+     * Keylistener voor pijltjes.
+     *
      */
     class arrowListener implements KeyListener {
+
         @Override
         public void keyReleased(KeyEvent e) {
             switch (e.getKeyCode()) {
@@ -344,7 +350,7 @@ public class Level extends JFrame {
                     moveDown();
                     break;
                 case 40:
-                    moveRight();   
+                    moveRight();
                     break;
             }
         }
@@ -359,10 +365,10 @@ public class Level extends JFrame {
             //wordt niet gebruikt
         }
     }
-    
+
     /**
-     *  Listener voor kliks.
-     * 
+     * Listener voor kliks.
+     *
      */
     class ClickListener implements ActionListener {
 
@@ -375,9 +381,10 @@ public class Level extends JFrame {
             }
         }
     }
-    
+
     /**
      * Start een nieuw level.
+     *
      * @param levelNr
      */
     public void startLevel(int levelNr) {
@@ -385,7 +392,7 @@ public class Level extends JFrame {
         levelNieuw.setVisible(true);
         this.dispose();
     }
-    
+
     /**
      * Reset het huidige level.
      */
