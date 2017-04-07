@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author gebruiker
+ * @author William
  */
 public class VakIT {
     

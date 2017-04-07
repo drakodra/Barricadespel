@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author gebruiker
+ * @author William
  */
 public class BarricadeIT {
     Speler speler;
@@ -47,7 +47,6 @@ public class BarricadeIT {
     @Test
     public void testLoopBaarb1s0() {
         System.out.println("test of de speler naar deze barricade met code 1 kan lopen zonder sleutel");
-        Speler speler = this.speler;
         speler.setSleutel(0);
         Barricade instance = new Barricade(level,1);
         boolean expResult = false;
@@ -61,7 +60,6 @@ public class BarricadeIT {
     @Test
     public void testLoopBaarb1s1() {
         System.out.println("test of de speler naar deze barricade met code 1 kan lopen met sleutel 1");
-        Speler speler = this.speler;
         speler.setSleutel(1);
         Barricade instance = new Barricade(level,1);
         boolean expResult = true;
@@ -72,7 +70,6 @@ public class BarricadeIT {
     @Test
     public void testLoopBaarb1s2() {
         System.out.println("test of de speler naar deze barricade met code 1 kan lopen met sleutel 2");
-        Speler speler = this.speler;
         speler.setSleutel(2);
         Barricade instance = new Barricade(level,1);
         boolean expResult = false;
@@ -86,7 +83,6 @@ public class BarricadeIT {
     @Test
     public void testLoopBaarb2s0() {
         System.out.println("test of de speler naar deze barricade met code 2 kan lopen zonder sleutel1");
-        Speler speler = this.speler;
         speler.setSleutel(1);
         Barricade instance = new Barricade(level,1);
         boolean expResult = true;
@@ -97,7 +93,6 @@ public class BarricadeIT {
         @Test
     public void testLoopBaarb2s1() {
         System.out.println("test of de speler naar deze barricade met code 2 kan lopen met sleutel 1");
-        Speler speler = this.speler;
         speler.setSleutel(1);
         Barricade instance = new Barricade(level,2);
         boolean expResult = false;
@@ -108,7 +103,6 @@ public class BarricadeIT {
     @Test
     public void testLoopBaarb2s2() {
         System.out.println("test of de speler naar deze barricade met code 2 kan lopen met sleutel 2");
-        Speler speler = this.speler;
         speler.setSleutel(2);
         Barricade instance = new Barricade(level,2);
         boolean expResult = true;
