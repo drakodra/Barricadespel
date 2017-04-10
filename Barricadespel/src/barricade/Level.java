@@ -150,7 +150,7 @@ public class Level extends JFrame {
      * @param kolom
      * @return
      */
-    public boolean checkVak(int kolom, int rij) {
+    public boolean checkVak(int rij, int kolom) {
         if ((rij > -1 && rij < 10) && (kolom > -1 && kolom < 10)) {
             return vak[rij][kolom].loopBaar(speler);
         } else {
@@ -281,7 +281,7 @@ public class Level extends JFrame {
      *
      */
     private void moveLeft() {
-        if (checkVak(speler.getPosHorizontaal() - 1, speler.getPosVerticaal())) {
+        if (checkVak(speler.getPosVerticaal(), speler.getPosHorizontaal() - 1)) {
             this.vak[speler.getPosVerticaal()][speler.getPosHorizontaal()].setIcon(this.leegVakicon);
             speler.StapLinks();
             this.vak[speler.getPosVerticaal()][speler.getPosHorizontaal()].showIcon(speler.getIcon());
@@ -295,7 +295,7 @@ public class Level extends JFrame {
      *
      */
     private void moveUp() {
-        if (checkVak(speler.getPosHorizontaal(), speler.getPosVerticaal() - 1)) {
+        if (checkVak(speler.getPosVerticaal() - 1, speler.getPosHorizontaal())) {
             this.vak[speler.getPosVerticaal()][speler.getPosHorizontaal()].setIcon(this.leegVakicon);
             speler.StapBoven();
             this.vak[speler.getPosVerticaal()][speler.getPosHorizontaal()].showIcon(speler.getIcon());
@@ -309,7 +309,7 @@ public class Level extends JFrame {
      *
      */
     private void moveRight() {
-        if (checkVak(speler.getPosHorizontaal() + 1, speler.getPosVerticaal())) {
+        if (checkVak(speler.getPosVerticaal(), speler.getPosHorizontaal() + 1)) {
             this.vak[speler.getPosVerticaal()][speler.getPosHorizontaal()].setIcon(this.leegVakicon);
             speler.StapRechts();
             this.vak[speler.getPosVerticaal()][speler.getPosHorizontaal()].showIcon(speler.getIcon());
@@ -323,7 +323,7 @@ public class Level extends JFrame {
      *
      */
     private void moveDown() {
-        if (checkVak(speler.getPosHorizontaal(), speler.getPosVerticaal() + 1)) {
+        if (checkVak(speler.getPosVerticaal() + 1, speler.getPosHorizontaal())) {
             this.vak[speler.getPosVerticaal()][speler.getPosHorizontaal()].setIcon(this.leegVakicon);
             speler.StapBeneden();
             this.vak[speler.getPosVerticaal()][speler.getPosHorizontaal()].showIcon(speler.getIcon());
