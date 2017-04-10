@@ -16,11 +16,7 @@ import javax.swing.JLabel;
 public class Speler extends JLabel {
     private int PosHorizontaal = 0;
     private int PosVerticaal = 0;
-    private Icon icon;
-    private ImageIcon rechts = new ImageIcon(getClass().getResource("images/SpelerRechts.png"));
-    private ImageIcon links = new ImageIcon(getClass().getResource("images/SpelerLinks.png"));
-    private ImageIcon boven = new ImageIcon(getClass().getResource("images/SpelerBoven.png"));
-    private ImageIcon beneden = new ImageIcon(getClass().getResource("images/SpelerBeneden.png"));
+    private ImageIcon icon = new ImageIcon(getClass().getResource("images/SpelerRechts.png"));;
     private int sleutelNr;
     
     /**
@@ -28,7 +24,7 @@ public class Speler extends JLabel {
      * @param PosHorizontaal
      * @param PosVerticaal
      */
-    public Speler(int PosHorizontaal, int PosVerticaal) {
+    public Speler(int PosVerticaal, int PosHorizontaal) {
         this.PosHorizontaal = PosHorizontaal;
         this.PosVerticaal = PosVerticaal;
     }
@@ -54,7 +50,7 @@ public class Speler extends JLabel {
      */
     public void StapRechts() {
         this.PosHorizontaal++;
-        this.icon = rechts;
+        this.icon = new ImageIcon(getClass().getResource("images/SpelerRechts.png"));
         showMe();
     }
     
@@ -63,7 +59,7 @@ public class Speler extends JLabel {
      */
     public void StapLinks() {
         this.PosHorizontaal--;
-        this.icon = links;
+        this.icon = new ImageIcon(getClass().getResource("images/SpelerLinks.png"));
         showMe();
     }
     
@@ -72,7 +68,7 @@ public class Speler extends JLabel {
      */
     public void StapBeneden() {
         this.PosVerticaal++;
-        this.icon = beneden;
+        this.icon = new ImageIcon(getClass().getResource("images/SpelerBeneden.png"));
         showMe();
     }
     
@@ -81,7 +77,7 @@ public class Speler extends JLabel {
      */
     public void StapBoven() {
         this.PosVerticaal--;
-        this.icon = boven;
+        this.icon = new ImageIcon(getClass().getResource("images/SpelerBoven.png"));
         showMe();
     }
     

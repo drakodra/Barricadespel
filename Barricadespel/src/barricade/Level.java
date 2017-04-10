@@ -150,7 +150,7 @@ public class Level extends JFrame {
      * @param kolom
      * @return
      */
-    public boolean checkVak(int rij, int kolom) {
+    public boolean checkVak(int kolom, int rij) {
         if ((rij > -1 && rij < 10) && (kolom > -1 && kolom < 10)) {
             return vak[rij][kolom].loopBaar(speler);
         } else {
@@ -195,8 +195,9 @@ public class Level extends JFrame {
                             break;
                         case 's':
                             this.speler = new Speler(rij, kolom);
+                            ImageIcon icon = new ImageIcon(getClass().getResource("images/SpelerBeneden.png"));
                             vak[rij][kolom] = new Vak(this);
-                            vak[rij][kolom].setIcon(this.leegVakicon);
+                            vak[rij][kolom].setIcon(icon);
                             break;
                         case '1':
                             vak[rij][kolom] = new Barricade(this, 1);
@@ -281,9 +282,9 @@ public class Level extends JFrame {
      */
     private void moveLeft() {
         if (checkVak(speler.getPosHorizontaal() - 1, speler.getPosVerticaal())) {
-            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].setIcon(this.leegVakicon);
+            this.vak[speler.getPosVerticaal()][speler.getPosHorizontaal()].setIcon(this.leegVakicon);
             speler.StapLinks();
-            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].showIcon(speler.getIcon());
+            this.vak[speler.getPosVerticaal()][speler.getPosHorizontaal()].showIcon(speler.getIcon());
             checkWinnaar(speler);
             updateSleutel(speler);
         }
@@ -295,9 +296,9 @@ public class Level extends JFrame {
      */
     private void moveUp() {
         if (checkVak(speler.getPosHorizontaal(), speler.getPosVerticaal() - 1)) {
-            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].setIcon(this.leegVakicon);
+            this.vak[speler.getPosVerticaal()][speler.getPosHorizontaal()].setIcon(this.leegVakicon);
             speler.StapBoven();
-            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].showIcon(speler.getIcon());
+            this.vak[speler.getPosVerticaal()][speler.getPosHorizontaal()].showIcon(speler.getIcon());
             checkWinnaar(speler);
             updateSleutel(speler);
         }
@@ -309,9 +310,9 @@ public class Level extends JFrame {
      */
     private void moveRight() {
         if (checkVak(speler.getPosHorizontaal() + 1, speler.getPosVerticaal())) {
-            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].setIcon(this.leegVakicon);
+            this.vak[speler.getPosVerticaal()][speler.getPosHorizontaal()].setIcon(this.leegVakicon);
             speler.StapRechts();
-            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].showIcon(speler.getIcon());
+            this.vak[speler.getPosVerticaal()][speler.getPosHorizontaal()].showIcon(speler.getIcon());
             checkWinnaar(speler);
             updateSleutel(speler);
         }
@@ -323,9 +324,9 @@ public class Level extends JFrame {
      */
     private void moveDown() {
         if (checkVak(speler.getPosHorizontaal(), speler.getPosVerticaal() + 1)) {
-            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].setIcon(this.leegVakicon);
+            this.vak[speler.getPosVerticaal()][speler.getPosHorizontaal()].setIcon(this.leegVakicon);
             speler.StapBeneden();
-            this.vak[speler.getPosHorizontaal()][speler.getPosVerticaal()].showIcon(speler.getIcon());
+            this.vak[speler.getPosVerticaal()][speler.getPosHorizontaal()].showIcon(speler.getIcon());
             checkWinnaar(speler);
             updateSleutel(speler);
         }
@@ -340,17 +341,17 @@ public class Level extends JFrame {
         @Override
         public void keyReleased(KeyEvent e) {
             switch (e.getKeyCode()) {
-                case 37:
+                case 37: //links
+                    moveLeft();  
+                    break;
+                case 38: // omhoog
                     moveUp();
                     break;
-                case 38:
-                    moveLeft();
-                    break;
-                case 39:
-                    moveDown();
-                    break;
-                case 40:
+                case 39: //rechts
                     moveRight();
+                    break;
+                case 40: //beneden
+                    moveDown();
                     break;
             }
         }
